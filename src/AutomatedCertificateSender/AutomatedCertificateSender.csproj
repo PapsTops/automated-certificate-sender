@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RootNamespace>automated_certificate_sender</RootNamespace>
+    <RootNamespace>AutomatedCertificateSender</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

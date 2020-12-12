@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutomatedCertificateSender.Models;
+using AutomatedCertificateSender.Services;
+using Castle.Core.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -8,16 +11,20 @@ namespace AutomatedCertificateSender.Test
     public class FormResponseManagerTest {
         
         [Test]
-        public void ShouldGetListOfResponses() {
+        public async Task ShouldGetListOfResponses() {
             
-            var sut = new Mock<IFormResponseManager>();
+            var logger = new Mock<ILogger>();
+            var formResponseService = new Mock<IFormReponseService>();
+
+            var sut = new FormResponseManager(logger, formResponseService);
+
             List<FormResponse> formResponses = new List<FormResponse>(); 
             sut.Setup(x => x.GetListOfFormResponses()).Returns(Task.FromResult(formResponses));
-            var expectedCount = 0;
+            var expectedCount = 1;
 
-            var actual = sut.Object.GetListOfFormResponses();
+            var actual = await sut.Object.GetListOfFormResponses();
 
-            Assert.That(expectedCount, Is.SameAs(actual));
+            Assert.That(expectedCount, Is.SameAs(actual.Count));
         }
     }    
 }
