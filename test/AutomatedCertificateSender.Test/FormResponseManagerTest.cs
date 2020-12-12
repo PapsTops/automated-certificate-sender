@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AutomatedCertificateSender.Models;
 using AutomatedCertificateSender.Services;
 using Castle.Core.Logging;
+using Microsoft.Extensions.Logging;
 using Moq;
 using NUnit.Framework;
 
@@ -11,20 +12,20 @@ namespace AutomatedCertificateSender.Test
     public class FormResponseManagerTest {
         
         [Test]
-        public async Task ShouldGetListOfResponses() {
+        public async Task ShouldGetListOfResponseIfDataServiceReturnAValue() 
+        {
             
-            var logger = new Mock<ILogger>();
-            var formResponseService = new Mock<IFormReponseService>();
+            var logger = new Mock<ILogger<FormResponseManager>>();
+            var dataService = new Mock<IDataService>();
 
-            var sut = new FormResponseManager(logger, formResponseService);
+            dataService.Setup(x => x.GetResponses(It.IsAny<string>()))
+                .Returns(Task.FromResult(new List<FormResponse>()));
 
-            List<FormResponse> formResponses = new List<FormResponse>(); 
-            sut.Setup(x => x.GetListOfFormResponses()).Returns(Task.FromResult(formResponses));
-            var expectedCount = 1;
+            var sut = new FormResponseManager(logger.Object, dataService.Object);
 
-            var actual = await sut.Object.GetListOfFormResponses();
+            var actual = await sut.GetFormResponses("my excel sheet");
 
-            Assert.That(expectedCount, Is.SameAs(actual.Count));
+            Assert.That(actual, Is.TypeOf(typeof(List<FormResponse>)));
         }
     }    
 }

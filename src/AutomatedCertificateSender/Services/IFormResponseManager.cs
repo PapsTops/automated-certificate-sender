@@ -6,7 +6,7 @@ namespace AutomatedCertificateSender.Services
 {
     public interface IFormResponseManager
     {
-        Task<List<FormResponse>> GetListOfFormResponses();
+        Task<List<FormResponse>> GetFormResponses(string excelSheetName);
     }
     
 }
