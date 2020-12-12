@@ -3,8 +3,6 @@ using Flurl;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AutomatedCertificateSender.Services
 {

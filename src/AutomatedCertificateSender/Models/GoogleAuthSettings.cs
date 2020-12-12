@@ -4,12 +4,12 @@ using System.Text;
 
 namespace AutomatedCertificateSender.Models
 {
-    public class GoogleAuthSettings
+    public record GoogleAuthSettings
     {
-        public string ClientId { get; set; }
-        public string ClientSecret { get; set; }
-        public string Scopes { get; set; }
-        public string  CallbackUrl { get; set; }
-        public string AuthorizeEndpoint { get; set; }
+        public string ClientId { get; init; }
+        public string ClientSecret { get; init; }
+        public string Scopes { get; init; }
+        public string  CallbackUrl { get; init; }
+        public string AuthorizeEndpoint { get; init; }
     }
 }
