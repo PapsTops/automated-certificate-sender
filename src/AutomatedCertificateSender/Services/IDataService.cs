@@ -9,5 +9,7 @@ namespace AutomatedCertificateSender.Services
     public interface IDataService
     {
         Task<List<FormResponse>> GetResponses(string v);
+        Task<GDriveQueryResult> GetListOfExcelSheetOnGDrive();
+        Task<FormResponse> GetExcelSheetValues(string sheetId, string range);
     }
 }
