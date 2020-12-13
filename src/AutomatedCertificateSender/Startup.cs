@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace AutomatedCertificateSender
 {
@@ -23,7 +25,17 @@ namespace AutomatedCertificateSender
             services.AddControllers();
             
             services.Configure<GoogleAuthSettings>(Configuration.GetSection("GoogleAuthSettings"));
-            
+
+            services.AddSingleton(sp =>
+            {
+                var logger = sp.GetService<ILogger<GoogleAuthSettingsService>>();
+                var options = sp.GetService<IOptionsMonitor<GoogleAuthSettings>>();
+                var googleAuth = sp.GetService<IGoogleAuth>();
+                var webHost = sp.GetService<IWebHostEnvironment>();
+
+                return new GoogleAuthSettingsService(logger, options, googleAuth, webHost);
+            });
+
             services.AddSingleton<IGoogleAuth, GoogleAuth>();
             
             services.AddSingleton<IFormResponseManager, FormResponseManager>();

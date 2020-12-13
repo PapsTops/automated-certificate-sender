@@ -9,6 +9,7 @@ namespace AutomatedCertificateSender
 {
     public static class BrowserLauncherUtil
     {
+        // https://stackoverflow.com/questions/38576854/how-do-i-launch-the-web-browser-after-starting-my-asp-net-core-application
         public static void OpenBrowser(string url)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))

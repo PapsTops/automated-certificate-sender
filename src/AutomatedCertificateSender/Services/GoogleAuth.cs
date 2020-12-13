@@ -1,8 +1,10 @@
 ﻿using AutomatedCertificateSender.Models;
 using Flurl;
+using Flurl.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
+using System.Threading.Tasks;
 
 namespace AutomatedCertificateSender.Services
 {
@@ -17,6 +19,23 @@ namespace AutomatedCertificateSender.Services
         {
             this._logger = logger ?? throw new ArgumentNullException(nameof(logger));
             this._googleAuthSettings = googleAuthSettings ?? throw new ArgumentNullException(nameof(googleAuthSettings));
+        }
+
+        public Task<OAuthResponse> CodeExchangeForAccessToken(string code)
+        {
+            var googleAuthSettings = _googleAuthSettings.Value;
+
+            return googleAuthSettings.TokenEndpoint
+                .SetQueryParams(new
+                {
+                    code,
+                    client_id = googleAuthSettings.ClientId,
+                    client_secret = googleAuthSettings.ClientSecret,
+                    redirect_uri = googleAuthSettings.CallbackUrl,
+                    grant_type = "authorization_code"
+                })
+                .PostAsync()
+                .ReceiveJson<OAuthResponse>();
         }
 
         public string GenerateStartUrl(string state = default)
@@ -39,6 +58,22 @@ namespace AutomatedCertificateSender.Services
 
             return startUrl.ToString();
 
+        }
+
+        public Task<OAuthResponse> RefreshAccessToken(string refreshToken)
+        {
+            var googleAuthSettings = _googleAuthSettings.Value;
+
+            return googleAuthSettings.TokenEndpoint
+                .SetQueryParams(new
+                {
+                    client_id = googleAuthSettings.ClientId,
+                    client_secret = googleAuthSettings.ClientSecret,
+                    refresh_token = refreshToken,
+                    grant_type = "refresh_token"
+                })
+                .PostAsync()
+                .ReceiveJson<OAuthResponse>();
         }
     }
 }
