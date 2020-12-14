@@ -1,15 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CC14AE17-194D-4A78-8317-7C25E9FA53F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatedCertificateSender", "src\AutomatedCertificateSender\AutomatedCertificateSender.csproj", "{74D7E5A9-8BBD-45EC-A748-02931E4C1D06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomatedCertificateSender", "src\AutomatedCertificateSender\AutomatedCertificateSender.csproj", "{74D7E5A9-8BBD-45EC-A748-02931E4C1D06}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FA1786B9-A5C1-439A-98BF-32A95A476729}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomatedCertificateSender.Test", "test\AutomatedCertificateSender.Test\AutomatedCertificateSender.Test.csproj", "{5685871A-F544-439A-B29F-F8D0B40F3809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomatedCertificateSender.Test", "test\AutomatedCertificateSender.Test\AutomatedCertificateSender.Test.csproj", "{5685871A-F544-439A-B29F-F8D0B40F3809}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COMRefs", "COMRefs\COMRefs.csproj", "{187ED99D-FDB6-4DD8-9A55-5119A7E15286}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{74D7E5A9-8BBD-45EC-A748-02931E4C1D06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,9 +47,28 @@ Global
 		{5685871A-F544-439A-B29F-F8D0B40F3809}.Release|x64.Build.0 = Release|Any CPU
 		{5685871A-F544-439A-B29F-F8D0B40F3809}.Release|x86.ActiveCfg = Release|Any CPU
 		{5685871A-F544-439A-B29F-F8D0B40F3809}.Release|x86.Build.0 = Release|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Debug|x64.Build.0 = Debug|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Debug|x86.Build.0 = Debug|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Release|x64.ActiveCfg = Release|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Release|x64.Build.0 = Release|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Release|x86.ActiveCfg = Release|Any CPU
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{74D7E5A9-8BBD-45EC-A748-02931E4C1D06} = {CC14AE17-194D-4A78-8317-7C25E9FA53F8}
 		{5685871A-F544-439A-B29F-F8D0B40F3809} = {FA1786B9-A5C1-439A-98BF-32A95A476729}
+		{187ED99D-FDB6-4DD8-9A55-5119A7E15286} = {CC14AE17-194D-4A78-8317-7C25E9FA53F8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2557D13C-E8B7-4FEB-9A7F-4ABA5094FFD5}
 	EndGlobalSection
 EndGlobal

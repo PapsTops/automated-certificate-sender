@@ -35,7 +35,7 @@ namespace AutomatedCertificateSender.Controllers
 
                 _logger.LogInformation("Successful code exchange. Redirecting....");
 
-                return LocalRedirect("~/api/excel/list");
+                return LocalRedirect("~/");
             }
             catch (FlurlHttpException ex)
             {
@@ -43,8 +43,6 @@ namespace AutomatedCertificateSender.Controllers
             }
 
             return Ok();
-
-            
         }
     }
 }

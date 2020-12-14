@@ -80,6 +80,5 @@ namespace AutomatedCertificateSender.Services
             return true;
         }
 
-
     }
 }

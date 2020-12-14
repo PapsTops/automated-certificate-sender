@@ -1,0 +1,15 @@
+<p>Select which excel sheet will be the source of automation</p>
+
+<label>The current source file is - </label><label style="font-weight: bold" *ngIf="currentSourceFile">{{ currentSourceFile.name }}</label>
+<form #excelFileForm="ngForm" (ngSubmit)="onSubmit(excelFileForm)">
+  <div *ngFor="let excel of availableExcelFiles">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="selectedFile" id="{{ excel.id }}" value="{{ excel.id }}" checked ngModel>
+      <label class="form-check-label">
+        {{ excel.name }}
+      </label>
+    </div>
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
